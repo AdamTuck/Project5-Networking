@@ -23,6 +23,13 @@ public class PlayerMovement : NetworkBehaviour
         GetAxis();
     }
 
+    [ServerRpc]
+    public void MovementServerRPC (float _horizontal, float _vertical)
+    {
+        horizontal = _horizontal;
+        vertical = _vertical;
+    }
+
     private void FixedUpdate()
     {
         MovePlayer();
@@ -31,11 +38,15 @@ public class PlayerMovement : NetworkBehaviour
 
     void GetAxis()
     {
-        if (!IsOwner)
-            return;
-
-        horizontal = Input.GetAxis("Horizontal");
-        vertical = Input.GetAxis("Vertical");
+        if (IsServer && IsLocalPlayer)
+        {
+            horizontal = Input.GetAxis("Horizontal");
+            vertical = Input.GetAxis("Vertical");
+        }
+        else if (IsClient && IsLocalPlayer)
+        {
+            MovementServerRPC(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        }
     }
 
     void MovePlayer ()

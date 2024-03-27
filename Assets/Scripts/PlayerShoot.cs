@@ -19,21 +19,33 @@ public class PlayerShoot : NetworkBehaviour
 
     void Update()
     {
-        ShootTankBullet();
+        if (Input.GetButtonDown("Jump"))
+        {
+            if (IsServer && IsLocalPlayer)
+            {
+                ShootTankBullet(OwnerClientId);
+            }
+            else if (IsClient && IsLocalPlayer) 
+            {
+                RequestShootServerRPC();
+            }
+        }  
     }
 
-    void ShootTankBullet ()
+    [ServerRpc]
+    public void RequestShootServerRPC (ServerRpcParams serverParams = default)
     {
-        if (!IsOwner)
-            return;
+        ShootTankBullet(serverParams.Receive.SenderClientId);
+    }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            GameObject bullet = Instantiate(bulletObj, shootPoint.position, shootPoint.rotation);
+    void ShootTankBullet (ulong ownerID)
+    {
+        GameObject bullet = Instantiate(bulletObj, shootPoint.position, shootPoint.rotation);
+        bullet.GetComponent<NetworkObject>().Spawn();
+        bullet.GetComponent<Bullet>().clientID = ownerID;
 
-            bullet.GetComponent<Rigidbody>().AddForce(tankRigidbody.velocity + bullet.transform.forward * bulletSpeed, ForceMode.VelocityChange);
+        bullet.GetComponent<Rigidbody>().AddForce(tankRigidbody.velocity + bullet.transform.forward * bulletSpeed, ForceMode.VelocityChange);
 
-            Destroy(bullet, 10);
-        }
+        Destroy(bullet, 10);
     }
 }

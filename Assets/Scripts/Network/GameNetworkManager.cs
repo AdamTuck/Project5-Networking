@@ -19,4 +19,10 @@ public class GameNetworkManager : MonoBehaviour
         NetworkManager.Singleton.StartClient();
         statusText.text = "Joined as Client";
     }
+
+    public void JoinServer ()
+    {
+        NetworkManager.Singleton.StartServer();
+        statusText.text = "Joined as Server!";
+    }
 }
