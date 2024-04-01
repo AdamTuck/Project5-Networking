@@ -298,75 +298,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 17049427}
   m_CullTransparentMesh: 1
---- !u!1 &38715520
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 38715521}
-  - component: {fileID: 38715523}
-  - component: {fileID: 38715522}
-  m_Layer: 0
-  m_Name: UI Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &38715521
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 38715520}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2059396054}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &38715522
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 38715520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4484808a2d148ab43b626c8aa5d5b92e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  localNickname: {fileID: 0}
-  joinCode: {fileID: 1659916889}
-  playerNameTag: {fileID: 500312358}
---- !u!114 &38715523
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 38715520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 3203693393
-  InScenePlacedSourceGlobalObjectIdHash: 0
-  AlwaysReplicateAsRoot: 0
-  SynchronizeTransform: 1
-  ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
-  SpawnWithObservers: 1
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
 --- !u!1 &56279317
 GameObject:
   m_ObjectHideFlags: 0
@@ -2581,7 +2512,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &713778113
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4367,10 +4298,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1343437123}
-  - component: {fileID: 1343437124}
   - component: {fileID: 1343437125}
+  - component: {fileID: 1343437124}
   m_Layer: 0
-  m_Name: Manager
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4384,8 +4315,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1343437122}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.995979, y: 9.242118, z: 14.580882}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 11.995972, y: 9.242126, z: 14.580872}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4403,6 +4334,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 574b21efe1fe13b4f97409f6887126b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNameField: {fileID: 117489017}
+  state:
+    m_InternalValue: 0
+  startPositions:
+  - {fileID: 2068286172}
+  - {fileID: 1290542150}
+  - {fileID: 1315362466}
+  - {fileID: 60067343}
+  scoreToWin: 10
+  endGameScreen: {fileID: 1035143983}
+  endGameMessage: {fileID: 1462356574}
+  scoreUI: {fileID: 1921803952}
 --- !u!114 &1343437125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6326,7 +6269,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 38715521}
   - {fileID: 2063775750}
   - {fileID: 1539522501}
   m_Father: {fileID: 0}
@@ -8125,6 +8067,6 @@ SceneRoots:
   - {fileID: 2015240391}
   - {fileID: 2005903864}
   - {fileID: 480690215}
-  - {fileID: 1343437123}
   - {fileID: 385977663}
+  - {fileID: 1343437123}
   - {fileID: 2059396054}

@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: -5159575935089616809}
   - component: {fileID: 5950187893427877134}
   - component: {fileID: -2273095523632061683}
+  - component: {fileID: -2249667611079979774}
   m_Layer: 0
   m_Name: Tank
   m_TagString: Untagged
@@ -110,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2115647601
+  GlobalObjectIdHash: 1625494703
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -192,6 +193,54 @@ MonoBehaviour:
   InLocalSpace: 0
   Interpolate: 1
   SlerpPosition: 0
+--- !u!114 &-2249667611079979774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2708175284520391657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 721d22ed16a2b864ca88dd92e1b6c3d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  txtPlayerName: {fileID: 6069422183682774076}
+  playerName:
+    m_InternalValue:
+      utf8LengthInBytes: 11
+      bytes:
+        offset0000:
+          byte0000: 80
+          byte0001: 108
+          byte0002: 97
+          byte0003: 121
+          byte0004: 101
+          byte0005: 114
+          byte0006: 32
+          byte0007: 78
+          byte0008: 97
+          byte0009: 109
+          byte0010: 101
+          byte0011: 0
+          byte0012: 0
+          byte0013: 0
+          byte0014: 0
+          byte0015: 0
+        byte0016: 0
+        byte0017: 0
+        byte0018: 0
+        byte0019: 0
+        byte0020: 0
+        byte0021: 0
+        byte0022: 0
+        byte0023: 0
+        byte0024: 0
+        byte0025: 0
+        byte0026: 0
+        byte0027: 0
+        byte0028: 0
+        byte0029: 0
 --- !u!1 &7705473852544140771
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,6 +250,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6310012531746355822}
+  - component: {fileID: 6598438150283223254}
   m_Layer: 0
   m_Name: PlayerName
   m_TagString: Untagged
@@ -224,6 +274,18 @@ Transform:
   - {fileID: 7804212911936712842}
   m_Father: {fileID: 6384810401165097538}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6598438150283223254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7705473852544140771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c09a8c51fc2bf4843834729ebcba941b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7861113544383192217
 GameObject:
   m_ObjectHideFlags: 0
@@ -496,6 +558,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 6307293009379362056}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5f6bca0ad11cc49d7b994095c6dbec11,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1132525889377699835}
   m_SourcePrefab: {fileID: 100100000, guid: 5f6bca0ad11cc49d7b994095c6dbec11, type: 3}
 --- !u!4 &2560515828601737942 stripped
 Transform:
@@ -530,3 +596,51 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.029365227, y: 0.044599924, z: 0.026628174}
   m_Center: {x: 0, y: -0.0047454415, z: 0.0073344754}
+--- !u!114 &1132525889377699835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2937216915273287788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 721d22ed16a2b864ca88dd92e1b6c3d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  txtPlayerName: {fileID: 6069422183682774076}
+  playerName:
+    m_InternalValue:
+      utf8LengthInBytes: 11
+      bytes:
+        offset0000:
+          byte0000: 80
+          byte0001: 108
+          byte0002: 97
+          byte0003: 121
+          byte0004: 101
+          byte0005: 114
+          byte0006: 32
+          byte0007: 78
+          byte0008: 97
+          byte0009: 109
+          byte0010: 101
+          byte0011: 0
+          byte0012: 0
+          byte0013: 0
+          byte0014: 0
+          byte0015: 0
+        byte0016: 0
+        byte0017: 0
+        byte0018: 0
+        byte0019: 0
+        byte0020: 0
+        byte0021: 0
+        byte0022: 0
+        byte0023: 0
+        byte0024: 0
+        byte0025: 0
+        byte0026: 0
+        byte0027: 0
+        byte0028: 0
+        byte0029: 0
