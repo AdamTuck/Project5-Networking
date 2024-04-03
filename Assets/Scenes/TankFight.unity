@@ -4345,7 +4345,7 @@ MonoBehaviour:
   scoreToWin: 10
   endGameScreen: {fileID: 1035143983}
   endGameMessage: {fileID: 1462356574}
-  scoreUI: {fileID: 1921803952}
+  scoreUI: {fileID: 546531359}
 --- !u!114 &1343437125
 MonoBehaviour:
   m_ObjectHideFlags: 0

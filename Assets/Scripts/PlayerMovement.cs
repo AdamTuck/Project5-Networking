@@ -12,6 +12,8 @@ public class PlayerMovement : NetworkBehaviour
 
     private float horizontal, vertical;
 
+    bool hasAuthority => IsServer;
+
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
@@ -26,37 +28,43 @@ public class PlayerMovement : NetworkBehaviour
     [ServerRpc]
     public void MovementServerRPC (float _horizontal, float _vertical)
     {
-        horizontal = _horizontal;
-        vertical = _vertical;
+        if (GameManager.instance.state.Value == 1)
+        {
+            horizontal = _horizontal;
+            vertical = _vertical;
+        }
+        else
+        {
+            horizontal = 0;
+            vertical = 0;
+        }
     }
 
     private void FixedUpdate()
     {
-        MovePlayer();
-        RotatePlayer();
+        tankRigidbody.velocity = tankRigidbody.transform.forward * tankMoveSpeed * vertical;
+        tankRigidbody.rotation = Quaternion.Euler(transform.eulerAngles + transform.up * horizontal * tankTurnSpeed);
     }
 
     void GetAxis()
     {
         if (IsServer && IsLocalPlayer)
         {
-            horizontal = Input.GetAxis("Horizontal");
-            vertical = Input.GetAxis("Vertical");
+            if (GameManager.instance.state.Value == 1)
+            {
+                horizontal = Input.GetAxis("Horizontal");
+                vertical = Input.GetAxis("Vertical");
+            }
+            else
+            {
+                horizontal = 0;
+                vertical = 0;
+            }
         }
         else if (IsClient && IsLocalPlayer)
         {
             MovementServerRPC(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         }
-    }
-
-    void MovePlayer ()
-    {
-        tankRigidbody.velocity = tankRigidbody.transform.forward * tankMoveSpeed * vertical;
-    }
-
-    void RotatePlayer ()
-    {
-        tankRigidbody.rotation = Quaternion.Euler(transform.eulerAngles + transform.up * horizontal * tankTurnSpeed);
     }
 
     //void ShootTankBullet()

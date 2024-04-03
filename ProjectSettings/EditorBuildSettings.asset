@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Demo.unity
+    path: Assets/Scenes/TankFight.unity
     guid: 21766f8ad5db4fe46a440311584f32ad
   m_configObjects: {}

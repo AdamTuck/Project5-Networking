@@ -22,7 +22,10 @@ public class GameManager : NetworkBehaviour
 
     private NetworkObject localPlayerObj;
 
-    public NetworkVariable<short> state = new NetworkVariable<short>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
+    public NetworkVariable<short> state = new NetworkVariable<short>(
+        0, 
+        NetworkVariableReadPermission.Everyone, 
+        NetworkVariableWritePermission.Server);
 
     Dictionary<ulong, string> playerNames = new Dictionary<ulong, string>();
     Dictionary<ulong, int> playerScores = new Dictionary<ulong, int>();
@@ -35,9 +38,7 @@ public class GameManager : NetworkBehaviour
     [Header("UI Elements")]
     [SerializeField] private GameObject endGameScreen;
     [SerializeField] private TMP_Text endGameMessage;
-    [SerializeField] private GameObject scoreUI;
-
-    
+    [SerializeField] private TMP_Text scoreUI;
 
     private void Awake()
     {
@@ -73,12 +74,17 @@ public class GameManager : NetworkBehaviour
         playerObj.transform.position = startPositions[(int)playerObj.OwnerClientId].position;
 
         // Set the player score to 0
-        playerScores.Add(playerObj.OwnerClientId, 0);
+
+        if (playerScores.ContainsKey(playerObj.OwnerClientId))
+            playerScores[playerObj.OwnerClientId] = 0;
+        else
+            playerScores.Add(playerObj.OwnerClientId, 0);
     }
 
     public void StartGame ()
     {
         state.Value = 1;
+        ShowScoreUI();
     }
 
     public void AddScore(ulong playerId)
@@ -86,8 +92,43 @@ public class GameManager : NetworkBehaviour
         if (IsServer)
         {
             playerScores[playerId]++;
-            // Display score here
+            ShowScoreUI();
             CheckWinner(playerId);
+        }
+    }
+
+    public void ShowScoreUI ()
+    {
+        scoreUI.text = "";
+
+        PlayerScores _scores = new PlayerScores();
+        _scores.scores = new List<ScoreInfo>();
+
+        foreach (var item in playerScores)
+        {
+            ScoreInfo temp = new ScoreInfo();
+
+            temp.score = item.Value;
+            temp.id = item.Key;
+            temp.name = playerNames[item.Key];
+
+            _scores.scores.Add(temp);
+
+            scoreUI.text += $"[{item.Key}] {playerNames[item.Key]}: {item.Value}/{scoreToWin}\n";
+        }
+
+        UpdateClientScoreClientRPC(JsonUtility.ToJson(_scores));
+    }
+
+    [ClientRpc]
+    public void UpdateClientScoreClientRPC (string scoreInfo)
+    {
+        PlayerScores scores = JsonUtility.FromJson<PlayerScores>(scoreInfo);
+        scoreUI.text = "";
+
+        foreach (var item in scores.scores)
+        {
+            scoreUI.text += $"[{item.id}] {item.name}: {item.score}/{scoreToWin}\n";
         }
     }
 
@@ -139,4 +180,10 @@ public class ScoreInfo
     public ulong id;
     public string name;
     public int score;
+}
+
+[System.Serializable]
+public class PlayerScores
+{
+    public List<ScoreInfo> scores;
 }
