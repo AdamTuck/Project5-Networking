@@ -18,8 +18,6 @@ public class PlayerInfo : NetworkBehaviour
     {
         playerName.OnValueChanged += OnNameChanged;
 
-        //txtPlayerName.SetText(playerName.Value.ToString());
-        //txtPlayerName.text = playerName.Value.ToString();
         txtPlayerName.text = playerName.Value.ToString();
         Debug.Log($"Player name set to(OnNetworkSpawn): {txtPlayerName.text}");
         gameObject.name = "Player_" + playerName.Value.ToString();
@@ -38,15 +36,10 @@ public class PlayerInfo : NetworkBehaviour
 
     void OnNameChanged (FixedString64Bytes prevVal, FixedString64Bytes newVal)
     {
-        //Debug.Log($"OnNameChanged Fired (prev, new): {prevVal}, {newVal}");
         if (newVal != prevVal)
         {
-            //Debug.Log($"Setting player name: {newVal.Value}");
-            //txtPlayerName.SetText(newVal.Value);
             txtPlayerName.text = newVal.Value.ToString();
-            //txtPlayerName.SetText("TEST");
             GameManager.instance.SetPlayerName(NetworkObject, newVal.Value.ToString());
-            Debug.Log($"Player name set to: {txtPlayerName.text}, {newVal.Value.ToString()}");
         }
     }
 

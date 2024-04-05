@@ -53,7 +53,7 @@ public class GameManager : NetworkBehaviour
         localPlayerObj = _localPlayer;
 
         if (playerNameField.text.Length > 0)
-            localPlayerObj.GetComponent<PlayerInfo>().SetName(playerNameField.text);
+            localPlayerObj.GetComponent<PlayerInfo>().SetName(playerNameField.text);   
         else
             localPlayerObj.GetComponent<PlayerInfo>().SetName($"Player-{localPlayerObj.OwnerClientId}");
 
