@@ -41,7 +41,7 @@ public class PlayerInfo : NetworkBehaviour
         //Debug.Log($"OnNameChanged Fired (prev, new): {prevVal}, {newVal}");
         if (newVal != prevVal)
         {
-//            Debug.Log($"Setting player name: {newVal.Value}");
+            //Debug.Log($"Setting player name: {newVal.Value}");
             //txtPlayerName.SetText(newVal.Value);
             txtPlayerName.text = newVal.Value.ToString();
             //txtPlayerName.SetText("TEST");
