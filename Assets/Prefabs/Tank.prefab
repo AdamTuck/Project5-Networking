@@ -206,6 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   txtPlayerName: {fileID: 6069422183682774076}
+  tankRenderer: {fileID: 3730083614513015225}
   playerName:
     m_InternalValue:
       utf8LengthInBytes: 11
@@ -275,6 +276,8 @@ MonoBehaviour:
         byte0059: 0
         byte0060: 0
         byte0061: 0
+  playerSkin:
+    m_InternalValue: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &2937216915273287788
 GameObject:
   m_ObjectHideFlags: 0

@@ -39,6 +39,7 @@ public class GameManager : NetworkBehaviour
     [SerializeField] private GameObject endGameScreen;
     [SerializeField] private TMP_Text endGameMessage;
     [SerializeField] private TMP_Text scoreUI;
+    [SerializeField] private TMP_Dropdown playerSkinDropdown;
 
     private void Awake()
     {
@@ -56,6 +57,29 @@ public class GameManager : NetworkBehaviour
             localPlayerObj.GetComponent<PlayerInfo>().SetName(playerNameField.text);   
         else
             localPlayerObj.GetComponent<PlayerInfo>().SetName($"Player-{localPlayerObj.OwnerClientId}");
+
+        Color playerSkinSelected = new Color();
+
+        switch(playerSkinDropdown.value)
+        {
+            case 0:
+                playerSkinSelected.r = 4;
+                playerSkinSelected.g = 10;
+                playerSkinSelected.b = 4;
+                break;
+            case 1:
+                playerSkinSelected.r = 166;
+                playerSkinSelected.g = 124;
+                playerSkinSelected.b = 0;
+                break;
+            case 2:
+                playerSkinSelected.r = 58;
+                playerSkinSelected.g = 0;
+                playerSkinSelected.b = 1;
+                break;
+        }
+
+        localPlayerObj.GetComponent<PlayerInfo>().SetSkin(playerSkinSelected);
 
         playerNameField.gameObject.SetActive(false);
     }

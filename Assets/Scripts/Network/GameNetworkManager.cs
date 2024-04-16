@@ -22,7 +22,8 @@ public class GameNetworkManager : MonoBehaviour
     [SerializeField] private TMP_Text statusText;
     [SerializeField] private TMP_Text playerIDText;
     [SerializeField] private TMP_InputField joinCodeText;
-
+    [SerializeField] private TMP_Dropdown playerSkinDropdown;
+    
     private string playerID;
     private string joinCode;
     private bool clientAuthenticated = false;
@@ -164,6 +165,7 @@ public class GameNetworkManager : MonoBehaviour
         btnClient.gameObject.SetActive(false);
         btnHost.gameObject.SetActive(false);
         joinCodeText.gameObject.SetActive(false);
+        playerSkinDropdown.gameObject.SetActive(false);
     }
 
     public void JoinClient()
@@ -187,6 +189,7 @@ public class GameNetworkManager : MonoBehaviour
         btnClient.gameObject.SetActive(false);
         btnHost.gameObject.SetActive(false);
         joinCodeText.gameObject.SetActive(false);
+        playerSkinDropdown.gameObject.SetActive(false);
 
     }
 
